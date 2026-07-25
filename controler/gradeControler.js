@@ -1,48 +1,76 @@
-import { addGrade, updateGrade, deleteGrade, rechercheGrade, listerGrades } from '../services/gradeService.js';
+import { addGrades,updateGrades,deleteGrades,rechercheGrade,listerGrades,calculeGrade,listerNotesEtudiant } from '../services/gradeService.js';
 
 
-function lister_Grade (req,res){
-    res.json(listerGrades());
+function lister_Grade(req, res) {
+    const grades = listerGrades();
+    res.json(grades);
 }
 
-function recherche_Grade (req,res){
+
+function recherche_Grade(req, res) {
     const grade = rechercheGrade(req.params.id);
+
     if (!grade) {
         return res.status(404).json({
-            message: 'Grade introuvable'
+            message: "Note introuvable"
         });
     }
+
     res.json(grade);
 }
 
-function add_Grade(req,res){
-    const grade = addGrade(req,res);
-    res.status(201).json(grade);
-}
 
-function add_Grade_id(req,res){
-    const grade = addGrade(req.params.id,req.body);
-    res.status(201).json(grade);
-}
+function add_Grade(req, res) {
 
-function update_Grade(req,res){
-    const grade = updateGrade(req.params.id,req.body);
-    if(!grade){
-        return res.status(404).json({
-            message :'Note non trouvee '
-        })
+    const { student_id, subject_id, note } = req.body;
+
+    const grade = addGrades(student_id, subject_id, note);
+
+    if (!grade) {
+        return res.status(400).json({
+            message: "Impossible d'ajouter la note"
+        });
     }
-    res.json(grade);
+
+    res.status(201).json({
+        message: "Note ajoutée avec succès",
+        id: grade
+    });
 }
 
-function delete_Grade(req,res){
-    const grade = deleteGrade(req.params.id);
-    if(!grade){
+
+function update_Grade(req, res) {
+
+    const { note } = req.body;
+
+    const grade = updateGrades(req.params.id, note);
+
+    if (!grade) {
         return res.status(404).json({
-            message :'Note non trouvee '
-        })
+            message: "Note introuvable"
+        });
     }
-    res.json(grade);
+
+    res.json({
+        message: "Note modifiée avec succès"
+    });
 }
 
-export {lister_Grade, recherche_Grade, add_Grade, add_Grade_id, update_Grade, delete_Grade}
+
+function delete_Grade(req, res) {
+
+    const grade = deleteGrades(req.params.id);
+
+    if (!grade) {
+        return res.status(404).json({
+            message: "Note introuvable"
+        });
+    }
+
+    res.json({
+        message: "Note supprimée avec succès"
+    });
+}
+
+
+export {lister_Grade,recherche_Grade,add_Grade,update_Grade,delete_Grade};

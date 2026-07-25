@@ -1,49 +1,49 @@
-import { listerStudents,addStudent,updateStudent,deleteStudent,rechercheStudent, } from "../services/studentService.js";
+import {addAbsence,marquerAbsence, consulerAbsences} from "../services/absenceService.js";
 
-function lister_Absence(req,res){
-    res.json(listerAbsence());
-}
+function add_Absence(req, res) {
+    const { student_id, date, status } = req.body;
 
+    const absence = addAbsence(student_id, date, status);
 
-function rechercher_Absence(req,res){
-    const student = rechercheStudent(req.params.id);
-    if (!student) {
-        return res.status(404).json({
-            message: "Etudiant introuvable"
+    if (!absence) {
+        return res.status(400).json({
+            message: "Impossible d'ajouter l'absence."
         });
     }
-    res.json(student);
+
+    res.status(201).json({
+        message: "Absence ajoutée avec succès",
+        id: absence
+    });
 }
 
-function add_Absence(req,res){
-    const absence = addAbsence(req ,res);
-    res.status(201).json(absence);
+function update_Absence(req, res) {
+
+    const { status } = req.body;
+
+    const absence = marquerAbsence(req.params.id, req.body.status);
+
+    if (!absence) {
+        return res.status(404).json({
+            message: "Absence non trouvée"
+        });
+    }
+
+    res.json({
+        message: "Absence mise à jour"
+    });
 }
 
-function add_Absence_id(req,res){
-    const absence = addAbsence(req.params.id, req.body);
-    res.status(201).json(absence);
-}
 
-function update_Absence(req,res){
-    const absence = updateAbsence(req.params.id,req.body);
-    if(!absence){
+function consuler_Absences(req,res){
+    const absences = consulerAbsences(req.params.student_id);
+    if(!absences){
         return res.status(404).json({
             message:'Absence NON trouver'
         })
     }
-    res.json(absence);
-}
-
-function delete_Absence(req,res){
-    const absence = deleteAbsence(req.params.id);
-    if(!absence){
-        return res.status(404).json({
-            message:'Absence non trouve'
-        })
-    }
-    res.json(absence);
+    res.json(absences);
 }
 
 
-export {lister_Absence, rechercher_Absence, add_Absence, add_Absence_id, update_Absence, delete_Absence}
+export {add_Absence, update_Absence, consuler_Absences}
