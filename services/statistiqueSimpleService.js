@@ -1,6 +1,4 @@
 import db from "../db/data.js";
-import Students from "../models/StudentsModel.js";
-
 
 
 

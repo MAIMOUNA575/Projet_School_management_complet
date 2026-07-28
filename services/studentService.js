@@ -52,7 +52,7 @@ function updateStudent(matricule, nom, prenom, age, classe, users_id) {
         return false;
     }
 
-    const student = new Students(existing.id, nom, prenom, age, classe, users_id);
+    const student = new Students(existing.id, matricule, nom, prenom, age, classe, users_id);
 
 
     const result = db.prepare(`UPDATE students SET nom = ?, prenom = ?, age = ?, classe = ?, users_id = ? WHERE matricule = ?`)

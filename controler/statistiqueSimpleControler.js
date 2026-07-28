@@ -10,7 +10,7 @@ function identifier_meilleur_Etudiant(req, res) {
 function moyenne_general(req, res) {
     const mGeneral = moyenneGenerale();
 
-    if (!mGeneral) {
+    if (mGeneral === null) {
         return res.status(404).json({
             message: "Aucune note trouve"
         });
@@ -42,7 +42,7 @@ function compter_absence(req, res) {
 
     const cAbsence = compterAbsences(req.params.id);
 
-    if (!cAbsence) {
+    if (cAbsence === null) {
         return res.status(404).json({
             message: "Étudiant introuvable"
         });

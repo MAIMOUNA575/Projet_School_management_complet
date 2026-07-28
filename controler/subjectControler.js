@@ -1,11 +1,11 @@
 import { addSubject, updateSubject, deleteSubject, rechercheSubject, listerSubjects } from '../services/subjectService.js';
 
 
-function lister_Suject(req,res){
+function lister_Subject(req, res) {
     res.json(listerSubjects());
 }
 
-function recherche_Subject(req,res){
+function recherche_Subject(req, res) {
     const subject = rechercheSubject(req.params.id);
     if (!subject) {
         return res.status(404).json({
@@ -14,35 +14,40 @@ function recherche_Subject(req,res){
     }
     res.json(subject);
 }
+function add_Subject(req, res) {
+    const { nom, teacher_id } = req.body;
 
-function add_Subject(req,res){
-    const subject = addSubject(req.body);
+    const subject = addSubject(nom, teacher_id);
+
     res.status(201).json(subject);
 }
 
-function add_Subject_id(req,res){
-    const subject = addSubject(req.params.id,req.body);
-    res.status(201).json(subject);
-}
 
-function update_Subject(req,res){
-    const subject = updateSubject(req.params.id,req.body);
-    if(!subject){
+function update_Subject(req, res) {
+
+    const { nom } = req.body;
+
+    const subject = updateSubject(req.params.id, nom);
+
+    if (!subject) {
         return res.status(404).json({
-            message:'Matiere non trouvee'
-        })
+            message: "Matière non trouvée"
+        });
     }
-    res.json(subject)
+
+    res.json(subject);
 }
 
-function delete_Subject(req,res){
+function delete_Subject(req, res) {
     const subject = deleteSubject(req.params.id);
-    if(!subject){
+    if (!subject) {
         return res.status(404).json({
-            message : 'Sujet non trouve'
+            message: 'Matière non trouvée'
         })
     }
-    res.json(subject)
+    res.json({
+        message: "Matière supprimée avec succès"
+    });
 }
 
-export {lister_Suject, recherche_Subject, add_Subject, add_Subject_id, update_Subject, delete_Subject}
+export { lister_Subject, recherche_Subject, add_Subject, update_Subject, delete_Subject }

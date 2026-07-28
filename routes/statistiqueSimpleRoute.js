@@ -5,17 +5,17 @@ import {identifier_meilleur_Etudiant,moyenne_general,moyenne_Etudiant,compter_ab
 
 const router = express.Router();
 
-router.get('/', identifier_meilleur_Etudiant);
 
-router.get('/:id', moyenne_general);
+router.get('/meilleur', identifier_meilleur_Etudiant);
 
-router.post('/', moyenne_Etudiant);
+router.get('/moyenne-generale', moyenne_general);
 
-router.put('/:id', compter_absence);
+router.get('/etudiant/:id/moyenne', moyenne_Etudiant);
 
-router.put('/:id', moyenne_par_Matiere);
+router.get('/etudiant/:id/absences', compter_absence);
 
-router.delete('/:id', statistique_Etudiant);
+router.get('/etudiant/:id/matieres', moyenne_par_Matiere);
 
+router.get('/etudiant/:id/statistiques', statistique_Etudiant);
 
 export default router;
