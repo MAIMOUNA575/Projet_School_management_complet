@@ -1,29 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>School Management - Connexion</title>
+
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <body>
-    <div class="card">
-        <h1>Connexion</h1>
-        <p class="sub">Accédez à votre espace School-management</p>
-        <form id="loginForm">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="prenom.nom@ecole.ci" required>
 
-            <label for="password">Mot de passe</label>
-            <input type="password" id="password" placeholder="••••••••" required>
+    <main class="container">
 
-            <button type="submit">Se connecter</button>
-        </form>
-        <p id="msg"></p>
-    </div>
-    <script src="./../js/login.js"></script>
+        <section class="left">
+
+            <div class="logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <h1>School Management</h1>
+            </div>
+
+            <h2>Bienvenue</h2>
+
+            <p>
+                Connectez-vous pour accéder à votre espace de gestion scolaire.
+            </p>
+
+        </section>
+
+        <section class="right">
+
+            <form id="loginForm">
+
+                <h2>Connexion</h2>
+
+                <div class="input-box">
+
+                    <label>Email</label>
+
+                    <div class="input">
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <input type="email" id="email" placeholder="Votre email" required>
+                    </div>
+
+                </div>
+
+                <div class="input-box">
+
+                    <label>Mot de passe</label>
+
+                    <div class="input">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input type="password" id="password" placeholder="Votre mot de passe" required>
+
+                        <i class="fa-solid fa-eye" id="togglePassword"></i>
+
+                    </div>
+
+                </div>
+
+                <button type="submit" id="btnLogin">
+                    Se connecter
+                </button>
+
+                <p id="message"></p>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <script src="js/login.js"></script>
+
 </body>
 
 </html>

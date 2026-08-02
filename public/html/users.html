@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enseignants | School Management</title>
+    <title>Utilisateurs | School Management</title>
 
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/table.css">
@@ -15,7 +15,7 @@
 
     <div class="container">
 
-        <!-- ===== SIDEBAR ===== -->
+        <!-- ===== Sidebar ===== -->
 
         <aside class="sidebar">
 
@@ -35,7 +35,7 @@
                         </a>
                     </li>
 
-                    <li>
+                    <li class="active">
                         <a href="users.html">
                             <i class="fa-solid fa-users"></i>
                             Utilisateurs
@@ -49,7 +49,7 @@
                         </a>
                     </li>
 
-                    <li class="active">
+                    <li>
                         <a href="teachers.html">
                             <i class="fa-solid fa-chalkboard-user"></i>
                             Enseignants
@@ -104,28 +104,28 @@
 
         </aside>
 
-        <!-- ===== CONTENU ===== -->
+        <!-- ===== Contenu ===== -->
 
         <main class="content">
 
             <header class="header">
 
-                <h1>Gestion des enseignants</h1>
+                <h1>Gestion des utilisateurs</h1>
 
             </header>
 
-            <!-- Actions -->
+            <!-- Barre d'actions -->
 
             <section class="actions">
 
-                <input type="text" id="searchTeacher" placeholder="Rechercher un enseignant...">
+                <input type="text" id="search" placeholder="Rechercher un utilisateur...">
 
-                <button id="btnSearchTeacher">
+                <button id="btnSearch">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     Rechercher
                 </button>
 
-                <button id="btnAddTeacher">
+                <button id="btnAdd">
                     <i class="fa-solid fa-plus"></i>
                     Ajouter
                 </button>
@@ -146,9 +146,9 @@
 
                             <th>Nom</th>
 
-                            <th>Matière</th>
+                            <th>Email</th>
 
-                            <th>ID Utilisateur</th>
+                            <th>Rôle</th>
 
                             <th>Actions</th>
 
@@ -156,13 +156,13 @@
 
                     </thead>
 
-                    <tbody id="teachersTable">
+                    <tbody id="usersTable">
 
                         <tr>
 
                             <td colspan="5">
 
-                                Aucun enseignant trouvé
+                                Aucun utilisateur trouvé
 
                             </td>
 
@@ -178,31 +178,43 @@
 
     </div>
 
-    <!-- ======================= -->
+    <!-- ========================= -->
 
-    <!-- MODAL -->
+    <!-- Fenêtre Ajouter -->
 
-    <!-- ======================= -->
+    <!-- ========================= -->
 
-    <div class="modal" id="teacherModal">
+    <div class="modal" id="userModal">
 
         <div class="modal-content">
 
-            <h2>Enseignant</h2>
+            <h2>Ajouter un utilisateur</h2>
 
-            <form id="teacherForm">
+            <form id="userForm">
 
                 <label>Nom</label>
 
                 <input type="text" id="name" required>
 
-                <label>Matière</label>
+                <label>Email</label>
 
-                <input type="text" id="matiere" required>
+                <input type="email" id="email" required>
 
-                <label>ID Utilisateur</label>
+                <label>Mot de passe</label>
 
-                <input type="number" id="users_id" required>
+                <input type="password" id="password" required>
+
+                <label>Rôle</label>
+
+                <select id="role">
+
+                    <option value="admin">Admin</option>
+
+                    <option value="teacher">Teacher</option>
+
+                    <option value="student">Student</option>
+
+                </select>
 
                 <div class="buttons">
 
@@ -212,7 +224,7 @@
 
                     </button>
 
-                    <button type="button" id="closeTeacherModal">
+                    <button type="button" id="closeModal">
 
                         Annuler
 
@@ -226,7 +238,7 @@
 
     </div>
 
-    <script src="js/teachers.js"></script>
+    <script src="js/users.js"></script>
 
 </body>
 

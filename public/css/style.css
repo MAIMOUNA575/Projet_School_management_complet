@@ -1,74 +1,301 @@
-/* index */
+/* ================================
+   RESET
+================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  font-family: Arial, sans-serif;
-  background: #f1efe8;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fb;
+  color: #222;
+  line-height: 1.5;
 }
- 
-.card {
-  background: #fff;
-  border: 1px solid #d3d1c7;
-  border-radius: 12px;
-  padding: 32px 28px;
-  width: 340px;
-  box-sizing: border-box;
+
+
+/* ================================
+   VARIABLES
+================================ */
+
+:root {
+
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+
+  --success: #16a34a;
+  --danger: #dc2626;
+  --warning: #f59e0b;
+
+  --white: #ffffff;
+  --black: #222222;
+
+  --gray: #f5f5f5;
+  --gray-dark: #555;
+
+  --border: #dddddd;
+
+  --shadow: 0 4px 12px rgba(0, 0, 0, .08);
+
+  --radius: 8px;
+
 }
- 
-h1 {
-  font-size: 18px;
-  text-align: center;
-  margin: 0 0 4px;
+
+
+/* ================================
+   LIENS
+================================ */
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
- 
-p.sub {
-  font-size: 13px;
-  color: #5f5e5a;
-  text-align: center;
-  margin: 0 0 24px;
+
+
+/* ================================
+   LISTES
+================================ */
+
+ul {
+  list-style: none;
 }
- 
-label {
-  font-size: 13px;
-  color: #5f5e5a;
+
+
+/* ================================
+   IMAGES
+================================ */
+
+img {
+  max-width: 100%;
   display: block;
-  margin-bottom: 6px;
 }
- 
-input {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 8px 10px;
-  margin-bottom: 16px;
-  border: 1px solid #b4b2a9;
-  border-radius: 8px;
-  font-size: 14px;
-}
- 
+
+
+/* ================================
+   BOUTONS
+================================ */
+
 button {
-  width: 100%;
-  padding: 10px;
-  background: #2c2c2a;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  font-size: 14px;
+
   cursor: pointer;
+
+  border: none;
+
+  outline: none;
+
+  transition: .3s;
+
 }
- 
+
 button:hover {
-  background: #444441;
+
+  opacity: .9;
+
 }
- 
-#msg {
-  font-size: 13px;
-  color: #5f5e5a;
+
+
+/* ================================
+   INPUTS
+================================ */
+
+input,
+select,
+textarea {
+
+  width: 100%;
+
+  padding: 12px;
+
+  border: 1px solid var(--border);
+
+  border-radius: var(--radius);
+
+  outline: none;
+
+  font-size: 15px;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+
+  border-color: var(--primary);
+
+}
+
+
+/* ================================
+   TITRES
+================================ */
+
+h1 {
+
+  font-size: 32px;
+
+  margin-bottom: 20px;
+
+}
+
+h2 {
+
+  font-size: 25px;
+
+  margin-bottom: 15px;
+
+}
+
+h3 {
+
+  font-size: 20px;
+
+}
+
+
+/* ================================
+   PARAGRAPHES
+================================ */
+
+p {
+
+  color: var(--gray-dark);
+
+}
+
+
+/* ================================
+   CONTAINER
+================================ */
+
+.container {
+
+  width: 90%;
+
+  max-width: 1200px;
+
+  margin: auto;
+
+}
+
+
+/* ================================
+   CARTES
+================================ */
+
+.card {
+
+  background: var(--white);
+
+  border-radius: var(--radius);
+
+  box-shadow: var(--shadow);
+
+  padding: 20px;
+
+}
+
+
+/* ================================
+   TABLEAUX
+================================ */
+
+table {
+
+  width: 100%;
+
+  border-collapse: collapse;
+
+}
+
+th,
+td {
+
+  padding: 15px;
+
+  text-align: left;
+
+}
+
+
+/* ================================
+   UTILITAIRES
+================================ */
+
+.text-center {
+
   text-align: center;
-  margin-top: 12px;
-  min-height: 16px;
+
 }
- 
+
+.mt-1 {
+
+  margin-top: 10px;
+
+}
+
+.mt-2 {
+
+  margin-top: 20px;
+
+}
+
+.mt-3 {
+
+  margin-top: 30px;
+
+}
+
+.mb-1 {
+
+  margin-bottom: 10px;
+
+}
+
+.mb-2 {
+
+  margin-bottom: 20px;
+
+}
+
+.mb-3 {
+
+  margin-bottom: 30px;
+
+}
+
+.hidden {
+
+  display: none;
+
+}
+
+
+/* ================================
+   SCROLLBAR
+================================ */
+
+::-webkit-scrollbar {
+
+  width: 8px;
+
+}
+
+::-webkit-scrollbar-thumb {
+
+  background: var(--primary);
+
+  border-radius: 20px;
+
+}
+
+::-webkit-scrollbar-track {
+
+  background: #eee;
+
+}

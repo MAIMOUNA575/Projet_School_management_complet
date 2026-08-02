@@ -1,0 +1,235 @@
+/* ==========================================
+   CONTENEUR DU TABLEAU
+========================================== */
+
+.table-container{
+    width:100%;
+    margin-top:25px;
+    background:#fff;
+    border-radius:10px;
+    padding:20px;
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+    overflow-x:auto;
+}
+
+
+/* ==========================================
+   TABLEAU
+========================================== */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:700px;
+}
+
+
+/* ==========================================
+   EN-TÊTE
+========================================== */
+
+thead{
+    background:#2563eb;
+    color:#fff;
+}
+
+thead th{
+    padding:15px;
+    text-align:left;
+    font-size:15px;
+}
+
+
+/* ==========================================
+   CORPS
+========================================== */
+
+tbody td{
+    padding:15px;
+    border-bottom:1px solid #ddd;
+    font-size:15px;
+}
+
+
+/* ==========================================
+   LIGNES
+========================================== */
+
+tbody tr:nth-child(even){
+    background:#f8f9fa;
+}
+
+tbody tr:hover{
+    background:#e8f1ff;
+    transition:.3s;
+}
+
+
+/* ==========================================
+   CELLULE VIDE
+========================================== */
+
+.empty{
+    text-align:center;
+    color:#777;
+    padding:30px;
+}
+
+
+/* ==========================================
+   BOUTONS D'ACTIONS
+========================================== */
+
+.actions{
+    display:flex;
+    gap:8px;
+}
+
+
+/* Modifier */
+
+.btn-edit{
+    background:#2563eb;
+    color:#fff;
+    border:none;
+    padding:8px 12px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.btn-edit:hover{
+    background:#1d4ed8;
+}
+
+
+/* Supprimer */
+
+.btn-delete{
+    background:#dc2626;
+    color:#fff;
+    border:none;
+    padding:8px 12px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.btn-delete:hover{
+    background:#b91c1c;
+}
+
+
+/* Voir */
+
+.btn-view{
+    background:#16a34a;
+    color:#fff;
+    border:none;
+    padding:8px 12px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.btn-view:hover{
+    background:#15803d;
+}
+
+
+/* ==========================================
+   BADGES
+========================================== */
+
+.badge{
+    padding:6px 12px;
+    border-radius:20px;
+    color:#fff;
+    font-size:13px;
+    font-weight:bold;
+}
+
+
+/* Rôles */
+
+.badge-admin{
+    background:#2563eb;
+}
+
+.badge-teacher{
+    background:#16a34a;
+}
+
+.badge-student{
+    background:#f59e0b;
+}
+
+
+/* Absences */
+
+.badge-present{
+    background:#16a34a;
+}
+
+.badge-absence{
+    background:#dc2626;
+}
+
+
+/* ==========================================
+   NOTES
+========================================== */
+
+.note-good{
+    color:#16a34a;
+    font-weight:bold;
+}
+
+.note-average{
+    color:#f59e0b;
+    font-weight:bold;
+}
+
+.note-bad{
+    color:#dc2626;
+    font-weight:bold;
+}
+
+
+/* ==========================================
+   PAGINATION
+========================================== */
+
+.pagination{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:10px;
+    margin-top:20px;
+}
+
+.pagination button{
+    padding:8px 15px;
+    border:none;
+    background:#2563eb;
+    color:#fff;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.pagination button:hover{
+    background:#1d4ed8;
+}
+
+.pagination span{
+    font-weight:bold;
+}
+
+
+/* ==========================================
+   MESSAGE SI AUCUNE DONNÉE
+========================================== */
+
+.no-data{
+    text-align:center;
+    padding:40px;
+    color:#777;
+    font-style:italic;
+}

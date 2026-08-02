@@ -2,26 +2,33 @@
 <html lang="fr">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enseignants | School Management</title>
+
+    <title>Matières | School Management</title>
 
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/table.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 </head>
 
 <body>
 
     <div class="container">
 
-        <!-- ===== SIDEBAR ===== -->
+        <!-- ================= SIDEBAR ================= -->
 
         <aside class="sidebar">
 
             <div class="logo">
+
                 <i class="fa-solid fa-graduation-cap"></i>
+
                 <h2>School Management</h2>
+
             </div>
 
             <nav>
@@ -49,14 +56,14 @@
                         </a>
                     </li>
 
-                    <li class="active">
+                    <li>
                         <a href="teachers.html">
                             <i class="fa-solid fa-chalkboard-user"></i>
                             Enseignants
                         </a>
                     </li>
 
-                    <li>
+                    <li class="active">
                         <a href="subjects.html">
                             <i class="fa-solid fa-book"></i>
                             Matières
@@ -104,30 +111,36 @@
 
         </aside>
 
-        <!-- ===== CONTENU ===== -->
+        <!-- ================= CONTENU ================= -->
 
         <main class="content">
 
             <header class="header">
 
-                <h1>Gestion des enseignants</h1>
+                <h1>Gestion des matières</h1>
 
             </header>
 
-            <!-- Actions -->
+            <!-- Barre d'actions -->
 
             <section class="actions">
 
-                <input type="text" id="searchTeacher" placeholder="Rechercher un enseignant...">
+                <input type="text" id="searchSubject" placeholder="Rechercher une matière...">
 
-                <button id="btnSearchTeacher">
+                <button id="btnSearchSubject">
+
                     <i class="fa-solid fa-magnifying-glass"></i>
+
                     Rechercher
+
                 </button>
 
-                <button id="btnAddTeacher">
+                <button id="btnAddSubject">
+
                     <i class="fa-solid fa-plus"></i>
+
                     Ajouter
+
                 </button>
 
             </section>
@@ -146,9 +159,7 @@
 
                             <th>Nom</th>
 
-                            <th>Matière</th>
-
-                            <th>ID Utilisateur</th>
+                            <th>Professeur</th>
 
                             <th>Actions</th>
 
@@ -156,13 +167,13 @@
 
                     </thead>
 
-                    <tbody id="teachersTable">
+                    <tbody id="subjectsTable">
 
                         <tr>
 
-                            <td colspan="5">
+                            <td colspan="4">
 
-                                Aucun enseignant trouvé
+                                Aucune matière trouvée
 
                             </td>
 
@@ -178,31 +189,23 @@
 
     </div>
 
-    <!-- ======================= -->
+    <!-- ================= MODAL ================= -->
 
-    <!-- MODAL -->
-
-    <!-- ======================= -->
-
-    <div class="modal" id="teacherModal">
+    <div class="modal" id="subjectModal">
 
         <div class="modal-content">
 
-            <h2>Enseignant</h2>
+            <h2>Nouvelle matière</h2>
 
-            <form id="teacherForm">
+            <form id="subjectForm">
 
-                <label>Nom</label>
+                <label>Nom de la matière</label>
 
-                <input type="text" id="name" required>
+                <input type="text" id="nom" required>
 
-                <label>Matière</label>
+                <label>ID du professeur</label>
 
-                <input type="text" id="matiere" required>
-
-                <label>ID Utilisateur</label>
-
-                <input type="number" id="users_id" required>
+                <input type="number" id="teacher_id" required>
 
                 <div class="buttons">
 
@@ -212,7 +215,7 @@
 
                     </button>
 
-                    <button type="button" id="closeTeacherModal">
+                    <button type="button" id="closeSubjectModal">
 
                         Annuler
 
@@ -226,7 +229,7 @@
 
     </div>
 
-    <script src="js/teachers.js"></script>
+    <script src="js/subjects.js"></script>
 
 </body>
 

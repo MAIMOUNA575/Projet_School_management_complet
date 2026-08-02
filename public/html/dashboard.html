@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enseignants | School Management</title>
+    <title>Dashboard | School Management</title>
 
     <link rel="stylesheet" href="css/dashboard.css">
-    <link rel="stylesheet" href="css/table.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
@@ -15,8 +14,7 @@
 
     <div class="container">
 
-        <!-- ===== SIDEBAR ===== -->
-
+        <!-- Sidebar -->
         <aside class="sidebar">
 
             <div class="logo">
@@ -28,7 +26,7 @@
 
                 <ul>
 
-                    <li>
+                    <li class="active">
                         <a href="dashboard.html">
                             <i class="fa-solid fa-house"></i>
                             Tableau de bord
@@ -49,7 +47,7 @@
                         </a>
                     </li>
 
-                    <li class="active">
+                    <li>
                         <a href="teachers.html">
                             <i class="fa-solid fa-chalkboard-user"></i>
                             Enseignants
@@ -87,7 +85,7 @@
                     <li>
                         <a href="profile.html">
                             <i class="fa-solid fa-user"></i>
-                            Profil
+                            Mon profil
                         </a>
                     </li>
 
@@ -104,37 +102,96 @@
 
         </aside>
 
-        <!-- ===== CONTENU ===== -->
-
+        <!-- Contenu -->
         <main class="content">
 
+            <!-- Barre supérieure -->
             <header class="header">
 
-                <h1>Gestion des enseignants</h1>
+                <h1>Tableau de bord</h1>
+
+                <div class="profile">
+
+                    <i class="fa-solid fa-circle-user"></i>
+
+                    <span id="userName">
+                        Administrateur
+                    </span>
+
+                </div>
 
             </header>
 
-            <!-- Actions -->
+            <!-- Cartes -->
+            <section class="cards">
 
-            <section class="actions">
+                <div class="card">
 
-                <input type="text" id="searchTeacher" placeholder="Rechercher un enseignant...">
+                    <i class="fa-solid fa-user-graduate"></i>
 
-                <button id="btnSearchTeacher">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    Rechercher
-                </button>
+                    <h3>Étudiants</h3>
 
-                <button id="btnAddTeacher">
-                    <i class="fa-solid fa-plus"></i>
-                    Ajouter
-                </button>
+                    <p id="studentsCount">0</p>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fa-solid fa-chalkboard-user"></i>
+
+                    <h3>Enseignants</h3>
+
+                    <p id="teachersCount">0</p>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fa-solid fa-book"></i>
+
+                    <h3>Matières</h3>
+
+                    <p id="subjectsCount">0</p>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fa-solid fa-square-poll-horizontal"></i>
+
+                    <h3>Notes</h3>
+
+                    <p id="gradesCount">0</p>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fa-solid fa-calendar-xmark"></i>
+
+                    <h3>Absences</h3>
+
+                    <p id="absencesCount">0</p>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fa-solid fa-chart-simple"></i>
+
+                    <h3>Moyenne générale</h3>
+
+                    <p id="average">0</p>
+
+                </div>
 
             </section>
 
-            <!-- Tableau -->
+            <!-- Meilleur étudiant -->
 
-            <section class="table-container">
+            <section class="bestStudent">
+
+                <h2>🏆 Meilleur étudiant</h2>
 
                 <table>
 
@@ -142,28 +199,24 @@
 
                         <tr>
 
-                            <th>ID</th>
-
                             <th>Nom</th>
 
-                            <th>Matière</th>
+                            <th>Prénom</th>
 
-                            <th>ID Utilisateur</th>
+                            <th>Classe</th>
 
-                            <th>Actions</th>
+                            <th>Moyenne</th>
 
                         </tr>
 
                     </thead>
 
-                    <tbody id="teachersTable">
+                    <tbody id="bestStudent">
 
                         <tr>
 
-                            <td colspan="5">
-
-                                Aucun enseignant trouvé
-
+                            <td colspan="4">
+                                Aucun étudiant
                             </td>
 
                         </tr>
@@ -174,59 +227,25 @@
 
             </section>
 
+            <!-- Activité récente -->
+
+            <section class="recent">
+
+                <h2>Dernières activités</h2>
+
+                <ul id="activity">
+
+                    <li>Aucune activité enregistrée.</li>
+
+                </ul>
+
+            </section>
+
         </main>
 
     </div>
 
-    <!-- ======================= -->
-
-    <!-- MODAL -->
-
-    <!-- ======================= -->
-
-    <div class="modal" id="teacherModal">
-
-        <div class="modal-content">
-
-            <h2>Enseignant</h2>
-
-            <form id="teacherForm">
-
-                <label>Nom</label>
-
-                <input type="text" id="name" required>
-
-                <label>Matière</label>
-
-                <input type="text" id="matiere" required>
-
-                <label>ID Utilisateur</label>
-
-                <input type="number" id="users_id" required>
-
-                <div class="buttons">
-
-                    <button type="submit">
-
-                        Enregistrer
-
-                    </button>
-
-                    <button type="button" id="closeTeacherModal">
-
-                        Annuler
-
-                    </button>
-
-                </div>
-
-            </form>
-
-        </div>
-
-    </div>
-
-    <script src="js/teachers.js"></script>
+    <script src="js/dashboard.js"></script>
 
 </body>
 

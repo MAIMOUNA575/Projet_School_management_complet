@@ -2,26 +2,33 @@
 <html lang="fr">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enseignants | School Management</title>
+
+    <title>Absences | School Management</title>
 
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/table.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 </head>
 
 <body>
 
     <div class="container">
 
-        <!-- ===== SIDEBAR ===== -->
+        <!-- ================= SIDEBAR ================= -->
 
         <aside class="sidebar">
 
             <div class="logo">
+
                 <i class="fa-solid fa-graduation-cap"></i>
+
                 <h2>School Management</h2>
+
             </div>
 
             <nav>
@@ -49,7 +56,7 @@
                         </a>
                     </li>
 
-                    <li class="active">
+                    <li>
                         <a href="teachers.html">
                             <i class="fa-solid fa-chalkboard-user"></i>
                             Enseignants
@@ -70,7 +77,7 @@
                         </a>
                     </li>
 
-                    <li>
+                    <li class="active">
                         <a href="absences.html">
                             <i class="fa-solid fa-calendar-xmark"></i>
                             Absences
@@ -104,30 +111,36 @@
 
         </aside>
 
-        <!-- ===== CONTENU ===== -->
+        <!-- ================= CONTENU ================= -->
 
         <main class="content">
 
             <header class="header">
 
-                <h1>Gestion des enseignants</h1>
+                <h1>Gestion des absences</h1>
 
             </header>
 
-            <!-- Actions -->
+            <!-- Barre d'actions -->
 
             <section class="actions">
 
-                <input type="text" id="searchTeacher" placeholder="Rechercher un enseignant...">
+                <input type="text" id="searchAbsence" placeholder="Rechercher une absence...">
 
-                <button id="btnSearchTeacher">
+                <button id="btnSearchAbsence">
+
                     <i class="fa-solid fa-magnifying-glass"></i>
+
                     Rechercher
+
                 </button>
 
-                <button id="btnAddTeacher">
+                <button id="btnAddAbsence">
+
                     <i class="fa-solid fa-plus"></i>
+
                     Ajouter
+
                 </button>
 
             </section>
@@ -144,11 +157,11 @@
 
                             <th>ID</th>
 
-                            <th>Nom</th>
+                            <th>Étudiant</th>
 
-                            <th>Matière</th>
+                            <th>Date</th>
 
-                            <th>ID Utilisateur</th>
+                            <th>Statut</th>
 
                             <th>Actions</th>
 
@@ -156,13 +169,13 @@
 
                     </thead>
 
-                    <tbody id="teachersTable">
+                    <tbody id="absencesTable">
 
                         <tr>
 
                             <td colspan="5">
 
-                                Aucun enseignant trouvé
+                                Aucune absence trouvée
 
                             </td>
 
@@ -178,31 +191,33 @@
 
     </div>
 
-    <!-- ======================= -->
+    <!-- ================= MODAL ================= -->
 
-    <!-- MODAL -->
-
-    <!-- ======================= -->
-
-    <div class="modal" id="teacherModal">
+    <div class="modal" id="absenceModal">
 
         <div class="modal-content">
 
-            <h2>Enseignant</h2>
+            <h2>Nouvelle absence</h2>
 
-            <form id="teacherForm">
+            <form id="absenceForm">
 
-                <label>Nom</label>
+                <label>ID Étudiant</label>
 
-                <input type="text" id="name" required>
+                <input type="number" id="student_id" required>
 
-                <label>Matière</label>
+                <label>Date</label>
 
-                <input type="text" id="matiere" required>
+                <input type="date" id="date" required>
 
-                <label>ID Utilisateur</label>
+                <label>Statut</label>
 
-                <input type="number" id="users_id" required>
+                <select id="status">
+
+                    <option value="1">Justifiée</option>
+
+                    <option value="0">Non justifiée</option>
+
+                </select>
 
                 <div class="buttons">
 
@@ -212,7 +227,7 @@
 
                     </button>
 
-                    <button type="button" id="closeTeacherModal">
+                    <button type="button" id="closeAbsenceModal">
 
                         Annuler
 
@@ -226,7 +241,7 @@
 
     </div>
 
-    <script src="js/teachers.js"></script>
+    <script src="js/absences.js"></script>
 
 </body>
 
