@@ -1,0 +1,288 @@
+/* ==========================================
+   FOND DE LA MODALE
+========================================== */
+
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,.5);
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:1000;
+
+}
+
+
+/* ==========================================
+   MODALE ACTIVE
+========================================== */
+
+.modal.active{
+
+    display:flex;
+
+}
+
+
+/* ==========================================
+   CONTENU DE LA MODALE
+========================================== */
+
+.modal-content{
+
+    width:90%;
+
+    max-width:600px;
+
+    background:#fff;
+
+    border-radius:10px;
+
+    padding:30px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.2);
+
+    animation:fadeIn .3s ease;
+
+}
+
+
+/* ==========================================
+   ANIMATION
+========================================== */
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/* ==========================================
+   EN-TÊTE
+========================================== */
+
+.modal-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.modal-header h2{
+
+    color:#1e293b;
+
+}
+
+
+/* ==========================================
+   BOUTON FERMER
+========================================== */
+
+.close-modal{
+
+    background:none;
+
+    border:none;
+
+    font-size:28px;
+
+    color:#777;
+
+    cursor:pointer;
+
+}
+
+.close-modal:hover{
+
+    color:#dc2626;
+
+}
+
+
+/* ==========================================
+   CORPS
+========================================== */
+
+.modal-body{
+
+    margin-bottom:20px;
+
+}
+
+
+/* ==========================================
+   PIED DE PAGE
+========================================== */
+
+.modal-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:15px;
+
+}
+
+
+/* ==========================================
+   BOUTONS
+========================================== */
+
+.modal-footer button{
+
+    padding:10px 20px;
+
+    border:none;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+/* Enregistrer */
+
+.btn-save{
+
+    background:#2563eb;
+
+    color:#fff;
+
+}
+
+.btn-save:hover{
+
+    background:#1d4ed8;
+
+}
+
+
+/* Annuler */
+
+.btn-cancel{
+
+    background:#6b7280;
+
+    color:#fff;
+
+}
+
+.btn-cancel:hover{
+
+    background:#4b5563;
+
+}
+
+
+/* Supprimer */
+
+.btn-delete{
+
+    background:#dc2626;
+
+    color:#fff;
+
+}
+
+.btn-delete:hover{
+
+    background:#b91c1c;
+
+}
+
+
+/* ==========================================
+   MESSAGE DE CONFIRMATION
+========================================== */
+
+.modal-message{
+
+    text-align:center;
+
+    font-size:16px;
+
+    color:#444;
+
+    margin:20px 0;
+
+}
+
+
+/* ==========================================
+   ICÔNES
+========================================== */
+
+.modal-icon{
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+}
+
+.modal-icon i{
+
+    font-size:55px;
+
+    color:#2563eb;
+
+}
+
+
+/* ==========================================
+   MODALE LARGE
+========================================== */
+
+.modal-large .modal-content{
+
+    max-width:900px;
+
+}
+
+
+/* ==========================================
+   MODALE PETITE
+========================================== */
+
+.modal-small .modal-content{
+
+    max-width:400px;
+
+}

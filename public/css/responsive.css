@@ -1,0 +1,267 @@
+/* ==========================================
+   ÉCRANS ≤ 992px (Tablettes)
+========================================== */
+
+@media screen and (max-width:992px){
+
+    .container{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
+    }
+
+    .content{
+        margin-left:0;
+        padding:20px;
+    }
+
+    .header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
+    .cards{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .profile-card{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .profile-actions{
+        justify-content:center;
+    }
+
+    .actions{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .actions input,
+    .actions button{
+        width:100%;
+    }
+
+    .search-form{
+        flex-direction:column;
+    }
+
+    .search-form input,
+    .search-form button{
+        width:100%;
+    }
+
+    .form-row{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+/* ==========================================
+   ÉCRANS ≤ 768px (Téléphones)
+========================================== */
+
+@media screen and (max-width:768px){
+
+    .sidebar{
+        width:100%;
+    }
+
+    .sidebar .logo{
+        padding:15px;
+    }
+
+    .sidebar ul li a{
+        padding:12px 18px;
+        font-size:14px;
+    }
+
+    .content{
+        padding:15px;
+    }
+
+    .header h1{
+        font-size:24px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .card h3{
+        font-size:18px;
+    }
+
+    .card p{
+        font-size:22px;
+    }
+
+    .table-container{
+        overflow-x:auto;
+    }
+
+    table{
+        min-width:700px;
+    }
+
+    .profile-image i{
+        font-size:90px;
+    }
+
+    .profile-actions{
+        flex-direction:column;
+    }
+
+    .profile-actions button{
+        width:100%;
+    }
+
+    .form-buttons{
+        flex-direction:column;
+    }
+
+    .form-buttons button{
+        width:100%;
+    }
+
+    .modal-content{
+        width:95%;
+        padding:20px;
+    }
+
+}
+
+
+/* ==========================================
+   ÉCRANS ≤ 576px (Petits téléphones)
+========================================== */
+
+@media screen and (max-width:576px){
+
+    h1{
+        font-size:22px;
+    }
+
+    h2{
+        font-size:20px;
+    }
+
+    h3{
+        font-size:18px;
+    }
+
+    p{
+        font-size:14px;
+    }
+
+    .logo h2{
+        font-size:18px;
+    }
+
+    .logo i{
+        font-size:40px;
+    }
+
+    .card{
+        padding:15px;
+    }
+
+    .card i{
+        font-size:30px;
+    }
+
+    .card p{
+        font-size:18px;
+    }
+
+    input,
+    select,
+    textarea{
+        font-size:14px;
+        padding:10px;
+    }
+
+    button{
+        font-size:14px;
+        padding:10px 15px;
+    }
+
+    .modal-header h2{
+        font-size:20px;
+    }
+
+    .modal-icon i{
+        font-size:40px;
+    }
+
+}
+
+
+/* ==========================================
+   TABLEAUX DÉFILANTS
+========================================== */
+
+.table-container{
+    overflow-x:auto;
+}
+
+table{
+    white-space:nowrap;
+}
+
+
+/* ==========================================
+   IMAGES RESPONSIVES
+========================================== */
+
+img{
+    max-width:100%;
+    height:auto;
+}
+
+
+/* ==========================================
+   IFRAME RESPONSIVE
+========================================== */
+
+iframe{
+    width:100%;
+    max-width:100%;
+}
+
+
+/* ==========================================
+   BOUTONS RESPONSIVES
+========================================== */
+
+.btn,
+.btn-save,
+.btn-update,
+.btn-delete,
+.btn-cancel{
+
+    min-width:120px;
+
+}
+
+
+/* ==========================================
+   SCROLLBAR MOBILE
+========================================== */
+
+::-webkit-scrollbar{
+
+    height:6px;
+
+}
