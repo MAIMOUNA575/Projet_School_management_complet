@@ -1,239 +1,144 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Notes | School Management</title>
-
-    <link rel="stylesheet" href="../css/dashboard.css">
-    <link rel="stylesheet" href="../css/table.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-</head>
-
-<body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes</title>
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/table.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+  <body>
     <div class="container">
-
-        <!-- ================= SIDEBAR ================= -->
-
-        <aside class="sidebar">
-
-            <div class="logo">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <h2>School Management</h2>
-            </div>
-
-            <nav>
-
-                <ul>
-
-                    <li>
-                        <a href="dashboard.html">
-                            <i class="fa-solid fa-house"></i>
-                            Tableau de bord
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="users.html">
-                            <i class="fa-solid fa-users"></i>
-                            Utilisateurs
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="students.html">
-                            <i class="fa-solid fa-user-graduate"></i>
-                            Étudiants
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="teachers.html">
-                            <i class="fa-solid fa-chalkboard-user"></i>
-                            Enseignants
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="subjects.html">
-                            <i class="fa-solid fa-book"></i>
-                            Matières
-                        </a>
-                    </li>
-
-                    <li class="active">
-                        <a href="grades.html">
-                            <i class="fa-solid fa-square-poll-horizontal"></i>
-                            Notes
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="absences.html">
-                            <i class="fa-solid fa-calendar-xmark"></i>
-                            Absences
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="statistics.html">
-                            <i class="fa-solid fa-chart-line"></i>
-                            Statistiques
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="profile.html">
-                            <i class="fa-solid fa-user"></i>
-                            Profil
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="index.html">
-                            <i class="fa-solid fa-right-from-bracket"></i>
-                            Déconnexion
-                        </a>
-                    </li>
-
-                </ul>
-
-            </nav>
-
-        </aside>
-
-        <!-- ================= CONTENU ================= -->
-
-        <main class="content">
-
-            <header class="header">
-
-                <h1>Gestion des notes</h1>
-
-            </header>
-
-            <!-- Barre d'actions -->
-
-            <section class="actions">
-
-                <input type="text" id="searchGrade" placeholder="Rechercher une note...">
-
-                <button id="btnSearchGrade">
-
-                    <i class="fa-solid fa-magnifying-glass"></i>
-
-                    Rechercher
-
-                </button>
-
-                <button id="btnAddGrade">
-
-                    <i class="fa-solid fa-plus"></i>
-
-                    Ajouter
-
-                </button>
-
-            </section>
-
-            <!-- Tableau -->
-
-            <section class="table-container">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>ID</th>
-
-                            <th>Étudiant</th>
-
-                            <th>Matière</th>
-
-                            <th>Note</th>
-
-                            <th>Actions</th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody id="gradesTable">
-
-                        <tr>
-
-                            <td colspan="5">
-
-                                Aucune note trouvée
-
-                            </td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </section>
-
-        </main>
-
-    </div>
-
-    <!-- ================= MODAL ================= -->
-
-    <div class="modal" id="gradeModal">
-
-        <div class="modal-content">
-
-            <h2>Nouvelle note</h2>
-
-            <form id="gradeForm">
-
-                <label>ID Étudiant</label>
-
-                <input type="number" id="student_id" required>
-
-                <label>ID Matière</label>
-
-                <input type="number" id="subject_id" required>
-
-                <label>Note (/20)</label>
-
-                <input type="number" id="note" min="0" max="20" step="0.5" required>
-
-                <div class="buttons">
-
-                    <button type="submit">
-
-                        Enregistrer
-
-                    </button>
-
-                    <button type="button" id="closeGradeModal">
-
-                        Annuler
-
-                    </button>
-
-                </div>
-
-            </form>
-
+      <aside class="sidebar">
+        <div class="logo">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h2>School Management</h2>
         </div>
-
+        <nav>
+          <ul>
+            <li>
+              <a href="dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                Tableau de bord
+              </a>
+            </li>
+            <li>
+              <a href="users.html">
+                <i class="fa-solid fa-users"></i>
+                Utilisateurs
+              </a>
+            </li>
+            <li>
+              <a href="students.html">
+                <i class="fa-solid fa-user-graduate"></i>
+                Étudiants
+              </a>
+            </li>
+            <li>
+              <a href="teachers.html">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                Enseignants
+              </a>
+            </li>
+            <li>
+              <a href="subjects.html">
+                <i class="fa-solid fa-book"></i>
+                Matières
+              </a>
+            </li>
+            <li class="active">
+              <a href="grades.html">
+                <i class="fa-solid fa-square-poll-horizontal"></i>
+                Notes
+              </a>
+            </li>
+            <li>
+              <a href="absences.html">
+                <i class="fa-solid fa-calendar-xmark"></i>
+                Absences
+              </a>
+            </li>
+            <li>
+              <a href="statistics.html">
+                <i class="fa-solid fa-chart-line"></i>
+                Statistiques
+              </a>
+            </li>
+            <li>
+              <a href="profile.html">
+                <i class="fa-solid fa-user"></i>
+                Profil
+              </a>
+            </li>
+            <li>
+              <a href="index.html">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Déconnexion
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <main class="content">
+        <header class="header">
+          <h1>Gestion des notes</h1>
+        </header>
+        <section class="actions">
+          <input
+            type="text"
+            id="searchGrade"
+            placeholder="Rechercher une note..."
+          />
+          <button id="btnSearchGrade">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            Rechercher
+          </button>
+          <button id="btnAddGrade">
+            <i class="fa-solid fa-plus"></i>
+            Ajouter
+          </button>
+        </section>
+        <section class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Étudiant</th>
+                <th>Matière</th>
+                <th>Note</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="gradesTable">
+              <tr>
+                <td colspan="5">Aucune note trouvée</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
     </div>
-
+    <div class="modal" id="gradeModal">
+      <div class="modal-content">
+        <h2>Nouvelle note</h2>
+        <form id="gradeForm">
+          <label>ID Étudiant</label>
+          <input type="number" id="student_id" required />
+          <label>ID Matière</label>
+          <input type="number" id="subject_id" required />
+          <label>Note (/20)</label>
+          <input type="number" id="note" min="0" max="20" step="0.5" required />
+          <div class="buttons">
+            <button type="submit">Enregistrer</button>
+            <button type="button" id="closeGradeModal">Annuler</button>
+          </div>
+        </form>
+      </div>
+    </div>
     <script src="js/grades.js"></script>
-
-</body>
-
+  </body>
 </html>

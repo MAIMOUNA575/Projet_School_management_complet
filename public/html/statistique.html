@@ -1,272 +1,153 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Statistiques | School Management</title>
-
-    <link rel="stylesheet" href="../css/dashboard.css">
-    <link rel="stylesheet" href="../css/table.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-</head>
-
-<body>
-
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/table.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+  </head>
+  <body>
     <div class="container">
-
-        <!-- ================= SIDEBAR ================= -->
-
-        <aside class="sidebar">
-
-            <div class="logo">
-
-                <i class="fa-solid fa-graduation-cap"></i>
-
-                <h2>School Management</h2>
-
-            </div>
-
-            <nav>
-
-                <ul>
-
-                    <li>
-                        <a href="dashboard.html">
-                            <i class="fa-solid fa-house"></i>
-                            Tableau de bord
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="users.html">
-                            <i class="fa-solid fa-users"></i>
-                            Utilisateurs
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="students.html">
-                            <i class="fa-solid fa-user-graduate"></i>
-                            Étudiants
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="teachers.html">
-                            <i class="fa-solid fa-chalkboard-user"></i>
-                            Enseignants
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="subjects.html">
-                            <i class="fa-solid fa-book"></i>
-                            Matières
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="grades.html">
-                            <i class="fa-solid fa-square-poll-horizontal"></i>
-                            Notes
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="absences.html">
-                            <i class="fa-solid fa-calendar-xmark"></i>
-                            Absences
-                        </a>
-                    </li>
-
-                    <li class="active">
-                        <a href="statistics.html">
-                            <i class="fa-solid fa-chart-line"></i>
-                            Statistiques
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="profile.html">
-                            <i class="fa-solid fa-user"></i>
-                            Profil
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="index.html">
-                            <i class="fa-solid fa-right-from-bracket"></i>
-                            Déconnexion
-                        </a>
-                    </li>
-
-                </ul>
-
-            </nav>
-
-        </aside>
-
-        <!-- ================= CONTENU ================= -->
-
-        <main class="content">
-
-            <header class="header">
-
-                <h1>Statistiques de l'établissement</h1>
-
-            </header>
-
-            <!-- Résumé -->
-
-            <section class="cards">
-
-                <div class="card">
-
-                    <i class="fa-solid fa-trophy"></i>
-
-                    <h3>Meilleur étudiant</h3>
-
-                    <p id="bestStudent">
-                        --
-                    </p>
-
-                </div>
-
-                <div class="card">
-
-                    <i class="fa-solid fa-chart-simple"></i>
-
-                    <h3>Moyenne générale</h3>
-
-                    <p id="generalAverage">
-                        --
-                    </p>
-
-                </div>
-
-            </section>
-
-            <!-- Recherche étudiant -->
-
-            <section class="actions">
-
-                <input type="number" id="studentId" placeholder="ID de l'étudiant">
-
-                <button id="btnStatistics">
-
-                    <i class="fa-solid fa-magnifying-glass"></i>
-
-                    Afficher
-
-                </button>
-
-            </section>
-
-            <!-- Informations -->
-
-            <section class="table-container">
-
-                <h2>Informations de l'étudiant</h2>
-
-                <table>
-
-                    <tbody>
-
-                        <tr>
-
-                            <th>Nom</th>
-
-                            <td id="studentName">--</td>
-
-                        </tr>
-
-                        <tr>
-
-                            <th>Moyenne</th>
-
-                            <td id="studentAverage">--</td>
-
-                        </tr>
-
-                        <tr>
-
-                            <th>Total absences</th>
-
-                            <td id="studentAbsence">--</td>
-
-                        </tr>
-
-                        <tr>
-
-                            <th>Absences justifiées</th>
-
-                            <td id="studentJustified">--</td>
-
-                        </tr>
-
-                        <tr>
-
-                            <th>Absences non justifiées</th>
-
-                            <td id="studentNotJustified">--</td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </section>
-
-            <!-- Moyennes par matière -->
-
-            <section class="table-container">
-
-                <h2>Moyennes par matière</h2>
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>Matière</th>
-
-                            <th>Moyenne</th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody id="subjectsAverageTable">
-
-                        <tr>
-
-                            <td colspan="2">
-
-                                Aucune donnée
-
-                            </td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </section>
-
-        </main>
-
+      <aside class="sidebar">
+        <div class="logo">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h2>School Management</h2>
+        </div>
+        <nav>
+          <ul>
+            <li>
+              <a href="dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                Tableau de bord
+              </a>
+            </li>
+            <li>
+              <a href="users.html">
+                <i class="fa-solid fa-users"></i>
+                Utilisateurs
+              </a>
+            </li>
+            <li>
+              <a href="students.html">
+                <i class="fa-solid fa-user-graduate"></i>
+                Étudiants
+              </a>
+            </li>
+            <li>
+              <a href="teachers.html">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                Enseignants
+              </a>
+            </li>
+            <li>
+              <a href="subjects.html">
+                <i class="fa-solid fa-book"></i>
+                Matières
+              </a>
+            </li>
+            <li>
+              <a href="grades.html">
+                <i class="fa-solid fa-square-poll-horizontal"></i>
+                Notes
+              </a>
+            </li>
+            <li>
+              <a href="absences.html">
+                <i class="fa-solid fa-calendar-xmark"></i>
+                Absences
+              </a>
+            </li>
+            <li class="active">
+              <a href="statistics.html">
+                <i class="fa-solid fa-chart-line"></i>
+                Statistiques
+              </a>
+            </li>
+            <li>
+              <a href="profile.html">
+                <i class="fa-solid fa-user"></i>
+                Profil
+              </a>
+            </li>
+            <li>
+              <a href="index.html">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Déconnexion
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <main class="content">
+        <header class="header">
+          <h1>Statistiques de l'établissement</h1>
+        </header>
+        <section class="cards">
+          <div class="card">
+            <i class="fa-solid fa-trophy"></i>
+            <h3>Meilleur étudiant</h3>
+            <p id="bestStudent">--</p>
+          </div>
+          <div class="card">
+            <i class="fa-solid fa-chart-simple"></i>
+            <h3>Moyenne générale</h3>
+            <p id="generalAverage">--</p>
+          </div>
+        </section>
+        <section class="actions">
+          <input type="number" id="studentId" placeholder="ID de l'étudiant" />
+          <button id="btnStatistics">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            Afficher
+          </button>
+        </section>
+        <section class="table-container">
+          <h2>Informations de l'étudiant</h2>
+          <table>
+            <tbody>
+              <tr>
+                <th>Nom</th>
+                <td id="studentName">--</td>
+              </tr>
+              <tr>
+                <th>Moyenne</th>
+                <td id="studentAverage">--</td>
+              </tr>
+              <tr>
+                <th>Total absences</th>
+                <td id="studentAbsence">--</td>
+              </tr>
+              <tr>
+                <th>Absences justifiées</th>
+                <td id="studentJustified">--</td>
+              </tr>
+              <tr>
+                <th>Absences non justifiées</th>
+                <td id="studentNotJustified">--</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="table-container">
+          <h2>Moyennes par matière</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Matière</th>
+                <th>Moyenne</th>
+              </tr>
+            </thead>
+            <tbody id="subjectsAverageTable">
+              <tr>
+                <td colspan="2">Aucune donnée</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </main>
     </div>
-
     <script src="js/statistics.js"></script>
-
-</body>
-
+  </body>
 </html>

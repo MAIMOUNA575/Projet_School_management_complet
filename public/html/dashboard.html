@@ -1,252 +1,197 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | School Management</title>
-
-    <link rel="stylesheet" href="../css/dashboard.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-</head>
-
-<body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"/>
+  </head>
+  <body>
     <div class="container">
+      <aside class="sidebar">
+        <div class="logo">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <h2>School Management</h2>
+        </div>
+
+        <nav>
+          <ul>
+            <li class="active">
+              <a href="dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                Tableau de bord
+              </a>
+            </li>
+
+            <li>
+              <a href="users.html">
+                <i class="fa-solid fa-users"></i>
+                Utilisateurs
+              </a>
+            </li>
+
+            <li>
+              <a href="students.html">
+                <i class="fa-solid fa-user-graduate"></i>
+                Étudiants
+              </a>
+            </li>
+
+            <li>
+              <a href="teachers.html">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                Enseignants
+              </a>
+            </li>
+
+            <li>
+              <a href="subjects.html">
+                <i class="fa-solid fa-book"></i>
+                Matières
+              </a>
+            </li>
+
+            <li>
+              <a href="grades.html">
+                <i class="fa-solid fa-square-poll-horizontal"></i>
+                Notes
+              </a>
+            </li>
+
+            <li>
+              <a href="absences.html">
+                <i class="fa-solid fa-calendar-xmark"></i>
+                Absences
+              </a>
+            </li>
+
+            <li>
+              <a href="statistics.html">
+                <i class="fa-solid fa-chart-line"></i>
+                Statistiques
+              </a>
+            </li>
+
+            <li>
+              <a href="profile.html">
+                <i class="fa-solid fa-user"></i>
+                Mon profil
+              </a>
+            </li>
+
+            <li>
+              <a href="index.html">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Déconnexion
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <!-- Contenu -->
+      <main class="content">
+        <!-- Barre supérieure -->
+        <header class="header">
+          <h1>Tableau de bord</h1>
+
+          <div class="profile">
+            <i class="fa-solid fa-circle-user"></i>
+
+            <span id="userName"> Administrateur </span>
+          </div>
+        </header>
+
+        <!-- Cartes -->
+        <section class="cards">
+          <div class="card">
+            <i class="fa-solid fa-user-graduate"></i>
+
+            <h3>Étudiants</h3>
+
+            <p id="studentsCount">0</p>
+          </div>
 
-        <!-- Sidebar -->
-        <aside class="sidebar">
-
-            <div class="logo">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <h2>School Management</h2>
-            </div>
-
-            <nav>
-
-                <ul>
-
-                    <li class="active">
-                        <a href="dashboard.html">
-                            <i class="fa-solid fa-house"></i>
-                            Tableau de bord
-                        </a>
-                    </li>
+          <div class="card">
+            <i class="fa-solid fa-chalkboard-user"></i>
 
-                    <li>
-                        <a href="users.html">
-                            <i class="fa-solid fa-users"></i>
-                            Utilisateurs
-                        </a>
-                    </li>
+            <h3>Enseignants</h3>
 
-                    <li>
-                        <a href="students.html">
-                            <i class="fa-solid fa-user-graduate"></i>
-                            Étudiants
-                        </a>
-                    </li>
+            <p id="teachersCount">0</p>
+          </div>
 
-                    <li>
-                        <a href="teachers.html">
-                            <i class="fa-solid fa-chalkboard-user"></i>
-                            Enseignants
-                        </a>
-                    </li>
+          <div class="card">
+            <i class="fa-solid fa-book"></i>
 
-                    <li>
-                        <a href="subjects.html">
-                            <i class="fa-solid fa-book"></i>
-                            Matières
-                        </a>
-                    </li>
+            <h3>Matières</h3>
 
-                    <li>
-                        <a href="grades.html">
-                            <i class="fa-solid fa-square-poll-horizontal"></i>
-                            Notes
-                        </a>
-                    </li>
+            <p id="subjectsCount">0</p>
+          </div>
 
-                    <li>
-                        <a href="absences.html">
-                            <i class="fa-solid fa-calendar-xmark"></i>
-                            Absences
-                        </a>
-                    </li>
+          <div class="card">
+            <i class="fa-solid fa-square-poll-horizontal"></i>
 
-                    <li>
-                        <a href="statistics.html">
-                            <i class="fa-solid fa-chart-line"></i>
-                            Statistiques
-                        </a>
-                    </li>
+            <h3>Notes</h3>
 
-                    <li>
-                        <a href="profile.html">
-                            <i class="fa-solid fa-user"></i>
-                            Mon profil
-                        </a>
-                    </li>
+            <p id="gradesCount">0</p>
+          </div>
 
-                    <li>
-                        <a href="index.html">
-                            <i class="fa-solid fa-right-from-bracket"></i>
-                            Déconnexion
-                        </a>
-                    </li>
+          <div class="card">
+            <i class="fa-solid fa-calendar-xmark"></i>
 
-                </ul>
+            <h3>Absences</h3>
 
-            </nav>
+            <p id="absencesCount">0</p>
+          </div>
 
-        </aside>
+          <div class="card">
+            <i class="fa-solid fa-chart-simple"></i>
 
-        <!-- Contenu -->
-        <main class="content">
+            <h3>Moyenne générale</h3>
 
-            <!-- Barre supérieure -->
-            <header class="header">
+            <p id="average">0</p>
+          </div>
+        </section>
 
-                <h1>Tableau de bord</h1>
+        <!-- Meilleur étudiant -->
 
-                <div class="profile">
+        <section class="bestStudent">
+          <h2>🏆 Meilleur étudiant</h2>
 
-                    <i class="fa-solid fa-circle-user"></i>
+          <table>
+            <thead>
+              <tr>
+                <th>Nom</th>
 
-                    <span id="userName">
-                        Administrateur
-                    </span>
+                <th>Prénom</th>
 
-                </div>
+                <th>Classe</th>
 
-            </header>
+                <th>Moyenne</th>
+              </tr>
+            </thead>
 
-            <!-- Cartes -->
-            <section class="cards">
+            <tbody id="bestStudent">
+              <tr>
+                <td colspan="4">Aucun étudiant</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
 
-                <div class="card">
+        <!-- Activité récente -->
 
-                    <i class="fa-solid fa-user-graduate"></i>
+        <section class="recent">
+          <h2>Dernières activités</h2>
 
-                    <h3>Étudiants</h3>
-
-                    <p id="studentsCount">0</p>
-
-                </div>
-
-                <div class="card">
-
-                    <i class="fa-solid fa-chalkboard-user"></i>
-
-                    <h3>Enseignants</h3>
-
-                    <p id="teachersCount">0</p>
-
-                </div>
-
-                <div class="card">
-
-                    <i class="fa-solid fa-book"></i>
-
-                    <h3>Matières</h3>
-
-                    <p id="subjectsCount">0</p>
-
-                </div>
-
-                <div class="card">
-
-                    <i class="fa-solid fa-square-poll-horizontal"></i>
-
-                    <h3>Notes</h3>
-
-                    <p id="gradesCount">0</p>
-
-                </div>
-
-                <div class="card">
-
-                    <i class="fa-solid fa-calendar-xmark"></i>
-
-                    <h3>Absences</h3>
-
-                    <p id="absencesCount">0</p>
-
-                </div>
-
-                <div class="card">
-
-                    <i class="fa-solid fa-chart-simple"></i>
-
-                    <h3>Moyenne générale</h3>
-
-                    <p id="average">0</p>
-
-                </div>
-
-            </section>
-
-            <!-- Meilleur étudiant -->
-
-            <section class="bestStudent">
-
-                <h2>🏆 Meilleur étudiant</h2>
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>Nom</th>
-
-                            <th>Prénom</th>
-
-                            <th>Classe</th>
-
-                            <th>Moyenne</th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody id="bestStudent">
-
-                        <tr>
-
-                            <td colspan="4">
-                                Aucun étudiant
-                            </td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </section>
-
-            <!-- Activité récente -->
-
-            <section class="recent">
-
-                <h2>Dernières activités</h2>
-
-                <ul id="activity">
-
-                    <li>Aucune activité enregistrée.</li>
-
-                </ul>
-
-            </section>
-
-        </main>
-
+          <ul id="activity">
+            <li>Aucune activité enregistrée.</li>
+          </ul>
+        </section>
+      </main>
     </div>
 
     <script src="js/dashboard.js"></script>
-
-</body>
-
+  </body>
 </html>
