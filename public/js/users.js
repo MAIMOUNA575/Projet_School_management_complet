@@ -1,17 +1,9 @@
-// ======================================
-// users.js
-// ======================================
 
 // Vérifier l'authentification
 checkAuth();
 
 // Afficher le nom de l'utilisateur connecté
 displayUser();
-
-
-// ======================================
-// Charger tous les utilisateurs
-// ======================================
 
 async function loadUsers() {
 

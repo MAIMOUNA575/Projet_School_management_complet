@@ -1,125 +1,90 @@
-// ======================================
-// AUTHENTIFICATION
-// ======================================
-
 // Vérifier si l'utilisateur est connecté
-function isAuthenticated() {
-    return localStorage.getItem("token") !== null;
+function Authentication() {
+  return localStorage.getItem("token") !== null;
 }
-
 
 // Récupérer le token
 function getToken() {
-    return localStorage.getItem("token");
+  return localStorage.getItem("token");
 }
-
 
 // Récupérer les informations de l'utilisateur
 function getUser() {
-    const user = localStorage.getItem("user");
+  const user = localStorage.getItem("user");
 
-    if (!user) {
-        return null;
-    }
+  if (!user) {
+    return null;
+  }
 
-    return JSON.parse(user);
+  return JSON.parse(user);
 }
-
 
 // Connexion
 async function login(email, password) {
+  try {
+    const result = await AuthAPI.login({
+      email,
+      password,
+    });
 
-    try {
+    localStorage.setItem("token", result.token);
+    localStorage.setItem("user", JSON.stringify(result.user));
 
-        const result = await AuthAPI.login({
-            email,
-            password
-        });
+    alert("Connexion réussie.");
 
-        localStorage.setItem("token", result.token);
-        localStorage.setItem("user", JSON.stringify(result.user));
-
-        alert("Connexion réussie.");
-
-        window.location.href = "index.html";
-
-    } catch (error) {
-
-        alert(error.message);
-
-    }
-
+    window.location.href = "index.html";
+  } catch (error) {
+    alert(error.message);
+  }
 }
-
 
 // Déconnexion
-function logout() {
+function Deconnexion() {
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
 
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-
-    window.location.href = "login.html";
-
+  window.location.href = "login.html";
 }
-
 
 // Vérifier si la page est protégée
 function checkAuth() {
-
-    if (!isAuthenticated()) {
-
-        window.location.href = "login.html";
-
-    }
-
+  if (!Authentication()) {
+    window.location.href = "login.html";
+  }
 }
-
 
 // Vérifier si l'utilisateur est administrateur
 function isAdmin() {
+  const user = getUser();
 
-    const user = getUser();
-
-    return user && user.role === "admin";
-
+  return user && user.role === "admin";
 }
-
 
 // Vérifier si l'utilisateur est professeur
 function isTeacher() {
+  const user = getUser();
 
-    const user = getUser();
-
-    return user && user.role === "teacher";
-
+  return user && user.role === "teacher";
 }
-
 
 // Vérifier si l'utilisateur est étudiant
 function isStudent() {
+  const user = getUser();
 
-    const user = getUser();
-
-    return user && user.role === "student";
-
+  return user && user.role === "student";
 }
 
-
 // Afficher le nom de l'utilisateur
-function displayUser() {
+function AfficherNomUser() {
+  const user = getUser();
 
-    const user = getUser();
+  if (!user) {
+    return;
+  }
 
-    if (!user) {
-        return;
-    }
+  const username = document.getElementById("username");
 
-    const username = document.getElementById("username");
-
-    if (username) {
-
-        username.textContent = user.name;
-
-    }
-
+  if (username) {
+    username.textContent = user.name;
+  }
 }
