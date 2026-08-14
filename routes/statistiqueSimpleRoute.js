@@ -1,3 +1,4 @@
+import { verifierStatistique } from "../middleWare/statistiqueWare.js";
 import express from 'express';
 import {identifier_meilleur_Etudiant,moyenne_general,moyenne_Etudiant,compter_absence,statistique_Etudiant,moyenne_par_Matiere} from "../controler/gradeControler.js";
 

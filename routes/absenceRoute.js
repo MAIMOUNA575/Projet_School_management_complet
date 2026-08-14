@@ -1,3 +1,4 @@
+import { verifierAbsence } from "../middleWare/absenceWare.js";
 import express from "express";
 import { add_Absence, update_Absence, consuler_Absences } from "../controler/absenceControler.js";
 

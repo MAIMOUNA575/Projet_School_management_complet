@@ -1,3 +1,4 @@
+import { auth } from "../middleWare/authWare.js";
 import express from "express";
 import { login, me } from "../controler/authControler.js";
 

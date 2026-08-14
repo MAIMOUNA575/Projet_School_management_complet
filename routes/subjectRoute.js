@@ -1,3 +1,4 @@
+import { verifierSubject } from "../middleWare/subjectWare.js";
 import express from 'express';
 import {lister_Subject, recherche_Subject, add_Subject, update_Subject, delete_Subject} from '../controler/subjectControler.js'
 

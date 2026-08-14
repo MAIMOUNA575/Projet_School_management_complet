@@ -1,3 +1,4 @@
+import { verifierUser } from "../middleWare/userWare.js";
 import express from "express";
 import{lister_User, recherche_User, add_User, update_User, delete_User} from '../controler/userControler.js'
 

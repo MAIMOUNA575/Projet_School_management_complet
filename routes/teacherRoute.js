@@ -1,3 +1,4 @@
+import { verifierTeacher } from "../middleWare/teacherWare.js";
 import express from "express";
 import { liste_Teacher, recherche_Teacher, add_Teacher, update_Teacher, delete_Teacher} from "../controler/teacherControler.js";
 

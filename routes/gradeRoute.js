@@ -1,3 +1,4 @@
+import { verifierGrade } from "../middleWare/gradeWare.js";
 import express from 'express';
 import {lister_Grade, recherche_Grade, add_Grade, update_Grade, delete_Grade} from "../controler/gradeControler.js";
 

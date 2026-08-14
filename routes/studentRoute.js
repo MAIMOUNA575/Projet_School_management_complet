@@ -1,3 +1,4 @@
+import { verifierStudent } from "../middleWare/studentWare.js";
 import express from "express";
 import {lister_Student, recherche_Student, add_Student, update_Student, delete_Student} from '../controler/studentControler.js'
 
