@@ -1,6 +1,5 @@
-import db from "../db/data.js";
-
-
+import db from "../db/database.js";
+import Subject from "../model/subjectModel.js";
 
 
 // ajouter un sujet

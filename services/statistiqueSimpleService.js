@@ -1,4 +1,4 @@
-import db from "../db/data.js";
+import db from "../db/database.js";
 
 
 

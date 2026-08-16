@@ -1,5 +1,5 @@
-import Teachers from "../models/TeachersModel.js";
-import db from "../db/data.js";
+import Teachers from "../model/teacherModel.js";
+import db from "../db/database.js";
 
 
 

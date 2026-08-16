@@ -88,3 +88,13 @@ function AfficherNomUser() {
     username.textContent = user.name;
   }
 }
+
+
+
+
+
+
+
+// chat 
+
+const token = localStorage.getItem("token");

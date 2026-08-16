@@ -1,5 +1,5 @@
-import Users from "../models/Users.model.js";
-import db from "../db/data.js";
+import Users from "../model/userModel.js";
+import db from "../db/database.js";
 import { log } from "../utils/logger.js";
 
 

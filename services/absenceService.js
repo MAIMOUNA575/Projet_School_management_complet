@@ -1,5 +1,5 @@
 import Absences from "../model/absenceModel.js";
-import db from "../db/data.js";
+import db from "../db/database.js";
 
 
 // Ajouter un etudiant 

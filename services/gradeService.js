@@ -1,5 +1,5 @@
-import Grades from "../models/GradesModel.js";
-import db from "../db/data.js";
+import Grades from "../model/gradeModel.js";
+import db from "../db/database.js";
 
 
 // ajouter une note (entre 0 et 20)
