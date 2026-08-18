@@ -12,10 +12,11 @@ import subjectRouter from './routes/subjectRoute.js'
 import gradeRouter from './routes/gradeRoute.js'
 import absenceRouter from './routes/absenceRoute.js'
 import userRouter from './routes/userRoute.js'
+import authRouter from './routes/authRoute.js'
 
 
 const app = express();
-
+app.use(cors());
 app.use(express.json())
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -25,7 +26,7 @@ app.get('/', (req, res) => {
   res.redirect('/index.html')
 });
 
-app.get('/acceuil', (req, res) => {
+app.get('/connexion', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/html/index.html'));
 });
 
@@ -33,7 +34,7 @@ app.get('/absences', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/html/absences.html'));
 });
 
-app.get('/dashboard', (req, res) => {
+app.get('/acceuil', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/html/dashboard.html'));
 });
 
@@ -69,21 +70,28 @@ const PORT = 3000
 
 
 
-
-
-
-
-
-
-
-
 app.use('/api/students', studentRouter);
+app.use('/api/auth', authRouter);
 app.use("/api/teachers", teacherRouter);
 app.use("/api/subjects", subjectRouter);
 app.use("/api/grades", gradeRouter);
 app.use("/api/absences", absenceRouter);
 app.use("/api/users", userRouter);
 
+
+app.use((req, res) => {
+  res.status(404).json({
+    message: "Route introuvable"
+  });
+});
+
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({
+    message: "Erreur interne du serveur"
+  });
+});
+
 app.listen(PORT, () => {
-  console.log(`Serveur démarré sur http://localhost:${PORT}/acceuil`);
+  console.log(`Serveur démarré sur http://localhost:${PORT}/connexion`);
 });
