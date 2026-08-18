@@ -1,4 +1,3 @@
-import { ok } from "assert"
 
 const loginForm = document.getElementById("loginForm")
 
@@ -11,6 +10,7 @@ loginForm.addEventListener("submit", async (event) => {
     return
   }
   const data = {
+
     email: email,
     password: password
   }

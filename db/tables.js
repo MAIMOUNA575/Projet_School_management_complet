@@ -1,4 +1,4 @@
-import db from "./data.js";
+import db from "./database.js";
 
 const Matabble1 = `
     CREATE TABLE IF NOT EXISTS users (
@@ -15,7 +15,7 @@ db.exec(Matabble1);
 // execution1.run('Keline', 'teacher','keline@gmail.com', 'JUTti134');
 // execution1.run('Noura', 'student','noura@gmail.com', 'MLA12yge');
 
-const Matable2 = `
+const Matabble2 = `
     CREATE TABLE IF NOT EXISTS students (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         matricule TEXT NOT NULL UNIQUE,
@@ -27,7 +27,7 @@ const Matable2 = `
         FOREIGN KEY (users_id) REFERENCES users(id)
     )
 `;
-db.exec(Matable2);
+db.exec(Matabble2);
 // const execution2 = db.prepare(`INSERT INTO students(matricule, nom, prenom, age, classe)VALUES (?, ?, ?, ?, ?)`);
 // execution2.run('15037', 'Campbell', 'docteur', 12, 'TleC');
 // execution2.run('49023', 'Coulibaly', 'Mouna', 16, 'TleA');
@@ -95,3 +95,4 @@ db.exec(Matabble6);
 // execution6.run(1, '08/06/2026', 'Absent');
 // execution6.run(2, '08/06/2026', 'Present');
 // execution6.run(3, '08/06/2026', 'Absent');
+
