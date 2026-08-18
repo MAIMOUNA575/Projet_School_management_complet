@@ -1,110 +1,144 @@
+const user = JSON.parse(localStorage.getItem("user"));
 
-// Vérifier que l'utilisateur est connecté
-checkAuth();
+const userName = document.getElementById('userName');
+userName.textContent = `Bienvenue, ${user.name}`;
 
-// Afficher les informations de l'utilisateur
-displayUser();
+const token = localStorage.getItem("token");
+const reponse = await fetch('http://localhost:3000/api/students', {
+  method: "GET",
+  headers: {
+    "Content-Type": "application/json"
+  },
 
-async function chargerDashboard() {
-  try {
-    // Chargement des données
-    const users = await UserAPI.getAll();
-    const students = await StudentAPI.getAll();
-    const teachers = await TeacherAPI.getAll();
-    const subjects = await SubjectAPI.getAll();
-    const absences = await AbsenceAPI.getAll();
+})
 
-    // Affichage des statistiques
-    document.getElementById("totalUsers").textContent = users.length;
-    document.getElementById("totalStudents").textContent = students.length;
-    document.getElementById("totalTeachers").textContent = teachers.length;
-    document.getElementById("totalSubjects").textContent = subjects.length;
-    document.getElementById("totalAbsences").textContent = absences.length;
-  } catch (error) {
-    console.error(error);
-    alert("Impossible de charger les statistiques.");
-  }
-}
-async function chargerMeilleurEtudiant() {
-  try {
-    const meilleur = await StatisticsAPI.bestStudent();
 
-    if (!meilleur) {
-      document.getElementById("bestStudent").textContent = "-";
-      document.getElementById("bestAverage").textContent = "-";
 
-      return;
-    }
 
-    document.getElementById("bestStudent").textContent =
-      `${meilleur.nom} ${meilleur.prenom}`;
 
-    document.getElementById("bestAverage").textContent = Number(
-      meilleur.moyenne,
-    ).toFixed(2);
-  } catch (error) {
-    console.error(error);
-  }
-}
 
-// Moyenne générale
 
-async function chargerMoyenneGenerale() {
-  try {
-    const moyenne = await StatisticsAPI.generalAverage();
 
-    document.getElementById("generalAverage").textContent = Number(
-      moyenne.moyenneGenerale,
-    ).toFixed(2);
-  } catch (error) {
-    console.error(error);
-  }
-}
 
-// Date et heure
 
-function afficherDate() {
-  const date = new Date();
 
-  const options = {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  };
 
-  const element = document.getElementById("currentDate");
 
-  if (element) {
-    element.textContent = date.toLocaleDateString("fr-FR", options);
-  }
-}
-function afficherBienvenue() {
-  const user = getUser();
 
-  if (!user) return;
 
-  const message = document.getElementById("welcomeMessage");
 
-  if (message) {
-    message.textContent = `Bienvenue ${user.name}`;
-  }
-}
 
-const logoButton = document.getElementById("logout");
 
-if (logoButton) {
-  logoButton.addEventListener("click", logout);
-}
 
-document.addEventListener("DOMContentLoaded", () => {
-  afficherBienvenue();
 
-  afficherDate();
 
-  chargerDashboard();
 
-  chargerMeilleurEtudiant();
+// // Vérifier que l'utilisateur est connecté
+// checkAuth();
 
-  chargerMoyenneGenerale();
-});
+// // Afficher les informations de l'utilisateur
+// displayUser();
+
+// async function chargerDashboard() {
+//   try {
+//     // Chargement des données
+//     const users = await UserAPI.getAll();
+//     const students = await StudentAPI.getAll();
+//     const teachers = await TeacherAPI.getAll();
+//     const subjects = await SubjectAPI.getAll();
+//     const absences = await AbsenceAPI.getAll();
+
+//     // Affichage des statistiques
+//     document.getElementById("totalUsers").textContent = users.length;
+//     document.getElementById("totalStudents").textContent = students.length;
+//     document.getElementById("totalTeachers").textContent = teachers.length;
+//     document.getElementById("totalSubjects").textContent = subjects.length;
+//     document.getElementById("totalAbsences").textContent = absences.length;
+//   } catch (error) {
+//     console.error(error);
+//     alert("Impossible de charger les statistiques.");
+//   }
+// }
+// async function chargerMeilleurEtudiant() {
+//   try {
+//     const meilleur = await StatisticsAPI.bestStudent();
+
+//     if (!meilleur) {
+//       document.getElementById("bestStudent").textContent = "-";
+//       document.getElementById("bestAverage").textContent = "-";
+
+//       return;
+//     }
+
+//     document.getElementById("bestStudent").textContent =
+//       `${meilleur.nom} ${meilleur.prenom}`;
+
+//     document.getElementById("bestAverage").textContent = Number(
+//       meilleur.moyenne,
+//     ).toFixed(2);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+
+// // Moyenne générale
+
+// async function chargerMoyenneGenerale() {
+//   try {
+//     const moyenne = await StatisticsAPI.generalAverage();
+
+//     document.getElementById("generalAverage").textContent = Number(
+//       moyenne.moyenneGenerale,
+//     ).toFixed(2);
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
+
+// // Date et heure
+
+// function afficherDate() {
+//   const date = new Date();
+
+//   const options = {
+//     weekday: "long",
+//     year: "numeric",
+//     month: "long",
+//     day: "numeric",
+//   };
+
+//   const element = document.getElementById("currentDate");
+
+//   if (element) {
+//     element.textContent = date.toLocaleDateString("fr-FR", options);
+//   }
+// }
+// function afficherBienvenue() {
+//   const user = getUser();
+
+//   if (!user) return;
+
+//   const message = document.getElementById("welcomeMessage");
+
+//   if (message) {
+//     message.textContent = `Bienvenue ${user.name}`;
+//   }
+// }
+
+// const logoButton = document.getElementById("logout");
+
+// if (logoButton) {
+//   logoButton.addEventListener("click", logout);
+// }
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   afficherBienvenue();
+
+//   afficherDate();
+
+//   chargerDashboard();
+
+//   chargerMeilleurEtudiant();
+
+//   chargerMoyenneGenerale();
+// });
