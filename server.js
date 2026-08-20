@@ -14,6 +14,7 @@ import gradeRouter from './routes/gradeRoute.js'
 import absenceRouter from './routes/absenceRoute.js'
 import userRouter from './routes/userRoute.js'
 import authRouter from './routes/authRoute.js'
+import statistiqueSimpleRoute from './routes/statistiqueSimpleRoute.js'
 
 
 const app = express();
@@ -31,45 +32,44 @@ app.get('/connexion', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/html/index.html'));
 });
 
-app.get('/absences', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/html/absences.html'));
-});
-
 app.get('/acceuil', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/html/dashboard.html'));
-});
-
-app.get('/grades', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/html/grades.html'));
 });
 
 app.get('/users', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/html/users.html'));
 });
 
-app.get('/profil', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/html/profil.html'));
+app.get('/students', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/html/students.html'));
 });
 
 app.get('/teacher', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/html/teacher.html'));
 });
 
-app.get('/students', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/html/students.html'));
+app.get('/subjects', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/html/subjects.html'));
+});
+
+app.get('/grades', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/html/grades.html'));
+});
+
+app.get('/absences', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/html/absences.html'));
 });
 
 app.get('/statistiques', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/html/statistiques.html'));
 });
 
-app.get('/subjects', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/html/subjects.html'));
+app.get('/profil', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/html/profil.html'));
 });
 
+
 const PORT = 3000
-
-
 
 app.use('/api/students', studentRouter);
 app.use('/api/auth', authRouter);
@@ -78,6 +78,7 @@ app.use("/api/subjects", subjectRouter);
 app.use("/api/grades", gradeRouter);
 app.use("/api/absences", absenceRouter);
 app.use("/api/users", userRouter);
+app.use("/api/statistiques", statistiqueSimpleRoute);
 
 
 app.use((req, res) => {

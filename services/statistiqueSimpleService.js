@@ -1,7 +1,5 @@
 import db from "../db/database.js";
 
-
-
 // Identifier le meilleur étudiant
 function identifierMeilleurEtudiant() {
     const students = db.prepare(`SELECT * FROM students`).all();

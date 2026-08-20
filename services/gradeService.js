@@ -17,6 +17,19 @@ function addGrades(student_id, subject_id, note) {
     return result.lastInsertRowid;
 }
 
+
+
+function listerDernieresNotes() {
+    return db.prepare(`
+        SELECT *
+        FROM grades
+        ORDER BY id DESC
+        LIMIT 3
+    `).all();
+}
+
+
+
 // modifier une note
 function updateGrades(id, note) {
 

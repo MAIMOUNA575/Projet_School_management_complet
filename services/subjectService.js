@@ -30,6 +30,16 @@ function addSubject(nom, teacher_id) {
 
 
 
+function listerDernieresMatieres() {
+    return db.prepare(`
+        SELECT *
+        FROM subjects
+        ORDER BY id DESC
+        LIMIT 3
+    `).all();
+}
+
+
 
 // lister tous les sujets
 function listerSubjects() {

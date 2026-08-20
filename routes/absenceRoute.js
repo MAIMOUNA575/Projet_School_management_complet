@@ -1,9 +1,12 @@
 import { verifierAbsence } from "../middleWare/absenceWare.js";
 import express from "express";
-import { add_Absence, update_Absence, consuler_Absences } from "../controler/absenceControler.js";
+import { add_Absence, update_Absence, consuler_Absences,lister_Absences } from "../controler/absenceControler.js";
 
 const router = express.Router();
 
+
+
+router.get('/',lister_Absences);
 
 router.get('/:student_id',consuler_Absences);
 

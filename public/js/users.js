@@ -1,239 +1,93 @@
+document.addEventListener("DOMContentLoaded", async () => {
 
-// Vérifier l'authentification
-checkAuth();
+  const usersTable = document.getElementById("usersTable");
 
-// Afficher le nom de l'utilisateur connecté
-displayUser();
+  const users = await getData("http://localhost:3000/api/users");
 
-async function loadUsers() {
+  console.log("UTILISATEURS :", users);
 
-    try {
+  if (!users || users.length === 0) {
+    usersTable.innerHTML = `
+      <tr>
+        <td colspan="5">Aucun utilisateur trouvé</td>
+      </tr>
+    `;
+    return;
+  }
 
-        const users = await UserAPI.getAll();
+  usersTable.innerHTML = users.map(user => `
+    <tr>
+      <td>${user.id}</td>
+      <td>${user.name}</td>
+      <td>${user.email}</td>
+      <td>${user.role}</td>
+      <td>
+        <button onclick="modifierUser(${user.id})">
+          Modifier
+        </button>
 
-        const tbody = document.getElementById("usersTable");
+        <button onclick="supprimerUser(${user.id})">
+          Supprimer
+        </button>
+      </td>
+    </tr>
+  `).join("");
 
-        tbody.innerHTML = "";
+});
 
-        users.forEach(user => {
 
-            tbody.innerHTML += `
-                <tr>
-                    <td>${user.id}</td>
-                    <td>${user.name}</td>
-                    <td>${user.role}</td>
-                    <td>${user.email}</td>
-                    <td>
-                        <button onclick="editUser(${user.id})">
-                            Modifier
-                        </button>
+async function getData(url) {
 
-                        <button onclick="deleteUserById(${user.id})">
-                            Supprimer
-                        </button>
-                    </td>
-                </tr>
-            `;
+  const token = localStorage.getItem("token");
 
-        });
+  const response = await fetch(url, {
+    method: "GET",
 
-    } catch (error) {
-
-        console.error(error);
-        alert("Impossible de charger les utilisateurs.");
-
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
     }
+  });
 
+  const data = await response.json();
+
+  return data;
 }
 
 
-// ======================================
-// Ajouter un utilisateur
-// ======================================
-
-async function addUserForm(event) {
-
-    event.preventDefault();
-
-    const name = document.getElementById("name").value;
-    const role = document.getElementById("role").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    try {
-
-        await UserAPI.create({
-            name,
-            role,
-            email,
-            password
-        });
-
-        alert("Utilisateur ajouté.");
-
-        document.getElementById("userForm").reset();
-
-        loadUsers();
-
-    } catch (error) {
-
-        alert(error.message);
-
-    }
-
-}
-
-
-// ======================================
-// Modifier
-// ======================================
-
-async function editUser(id) {
-
-    try {
-
-        const user = await UserAPI.getById(id);
-
-        document.getElementById("userId").value = user.id;
-        document.getElementById("name").value = user.name;
-        document.getElementById("role").value = user.role;
-        document.getElementById("email").value = user.email;
-
-    } catch (error) {
-
-        alert(error.message);
-
-    }
-
-}
-
-
-// ======================================
-// Sauvegarder les modifications
-// ======================================
-
-async function updateUserForm() {
-
-    const id = document.getElementById("userId").value;
-
-    try {
-
-        await UserAPI.update(id, {
-
-            name: document.getElementById("name").value,
-            role: document.getElementById("role").value
-
-        });
-
-        alert("Utilisateur modifié.");
-
-        document.getElementById("userForm").reset();
-
-        loadUsers();
-
-    } catch (error) {
-
-        alert(error.message);
-
-    }
-
-}
-
-
-// ======================================
-// Supprimer
-// ======================================
-
-async function deleteUserById(id) {
-
-    const confirmation = confirm("Supprimer cet utilisateur ?");
-
-    if (!confirmation) {
-
-        return;
-
-    }
-
-    try {
-
-        await UserAPI.delete(id);
-
-        alert("Utilisateur supprimé.");
-
-        loadUsers();
-
-    } catch (error) {
-
-        alert(error.message);
-
-    }
-
-}
-
-
-// ======================================
-// Recherche
-// ======================================
-
-async function searchUser() {
-
-    const id = document.getElementById("search").value;
-
-    if (!id) {
-
-        loadUsers();
-
-        return;
-
-    }
-
-    try {
-
-        const user = await UserAPI.getById(id);
-
-        const tbody = document.getElementById("usersTable");
-
-        tbody.innerHTML = `
-            <tr>
-                <td>${user.id}</td>
-                <td>${user.name}</td>
-                <td>${user.role}</td>
-                <td>${user.email}</td>
-                <td>
-                    <button onclick="editUser(${user.id})">
-                        Modifier
-                    </button>
-
-                    <button onclick="deleteUserById(${user.id})">
-                        Supprimer
-                    </button>
-                </td>
-            </tr>
-        `;
-
-    } catch (error) {
-
-        alert(error.message);
-
-    }
-
-}
-
-
-// ======================================
-// Initialisation
-// ======================================
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    loadUsers();
-
-    const form = document.getElementById("userForm");
-
-    if (form) {
-
-        form.addEventListener("submit", addUserForm);
-
-    }
-
+const btnAdd = document.getElementById("btnAdd");
+btnAdd.addEventListener("click", () => {
+  const userModal = document.getElementById("userModal");
+  const closeModal = document.getElementById("closeModal");
+  userModal.style.display = "flex";
+});
+
+
+const userForm = document.getElementById("userForm");
+
+userForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const role = document.getElementById("role").value;
+  const password = document.getElementById("password").value;
+
+  const user = {
+    name: name,
+    email: email,
+    role: role,
+    password: password
+  }
+  console.log("UTILISATEUR :", user);
+
+
+  const response = await fetch("http://localhost:3000/api/users", {
+    method: "POST",
+
+    headers: {
+      "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify(user)
+  });
 });

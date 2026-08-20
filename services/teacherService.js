@@ -3,6 +3,15 @@ import db from "../db/database.js";
 
 
 
+function listerDerniersProfesseurs() {
+    return db.prepare(`
+        SELECT *
+        FROM teachers
+        ORDER BY id DESC
+        LIMIT 3
+    `).all();
+}
+
 
 // ajouter un professeur
 function addTeacher(name, matiere, users_id) {

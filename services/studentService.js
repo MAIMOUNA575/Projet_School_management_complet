@@ -33,6 +33,16 @@ function addStudent(matricule, nom, prenom, age, classe, users_id) {
 
 
 
+function listerDerniersEtudiants() {
+    return db.prepare(`
+        SELECT *
+        FROM students
+        ORDER BY id DESC
+        LIMIT 3
+    `).all();
+}
+
+
 // modifier un étudiant
 function updateStudent(matricule, nom, prenom, age, classe, users_id) {
     if (!matricule || !nom || !prenom || !age || !classe || !users_id) {

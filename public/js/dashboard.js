@@ -1,144 +1,139 @@
-const user = JSON.parse(localStorage.getItem("user"));
+document.addEventListener("DOMContentLoaded", async () => {
+  const user = JSON.parse(localStorage.getItem("user"));
 
-const userName = document.getElementById('userName');
-userName.textContent = `Bienvenue, ${user.name}`;
+  const userName = document.getElementById("userName");
+  userName.textContent = `Bienvenue, ${user.name}`;
 
-const token = localStorage.getItem("token");
-const reponse = await fetch('http://localhost:3000/api/students', {
-  method: "GET",
-  headers: {
-    "Content-Type": "application/json"
-  },
+  const students = await getData("http://localhost:3000/api/students");
+  const studentsCount = document.getElementById("studentsCount");
+  studentsCount.textContent = students.length;
 
-})
+  const teachers = await getData("http://localhost:3000/api/teachers");
+  const teachersCount = document.getElementById("teachersCount");
+  teachersCount.textContent = teachers.length;
 
+  const subjects = await getData("http://localhost:3000/api/subjects");
+  const subjectsCount = document.getElementById("subjectsCount");
+  subjectsCount.textContent = subjects.length;
 
+  const absences = await getData("http://localhost:3000/api/absences");
+  const absencesCount = document.getElementById("absencesCount");
+  absencesCount.textContent = absences.length;
 
+  const grades = await getData("http://localhost:3000/api/grades");
+  const gradesCount = document.getElementById("gradesCount");
+  gradesCount.textContent = grades.length;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  const statistiques = await getData("http://localhost:3000/api/statistiques/moyenne-generale");
+  const average = document.getElementById("average");
+  average.textContent = statistiques.moyenne_generale.toFixed(2);
 
 
+  const meilleur = await getData("http://localhost:3000/api/statistiques/meilleur");
 
+  console.log("MEILLEUR ÉTUDIANT :", meilleur);
 
-// // Vérifier que l'utilisateur est connecté
-// checkAuth();
+  const bestStudent = document.getElementById("bestStudent");
 
-// // Afficher les informations de l'utilisateur
-// displayUser();
+  if (meilleur) {
+    bestStudent.innerHTML = `
+    <tr>
+      <td>${meilleur.nom}</td>
+      <td>${meilleur.prenom}</td>
+      <td>${meilleur.classe}</td>
+      <td>${meilleur.moyenne.toFixed(2)}</td>
+    </tr>
+  `;
+  }
 
-// async function chargerDashboard() {
-//   try {
-//     // Chargement des données
-//     const users = await UserAPI.getAll();
-//     const students = await StudentAPI.getAll();
-//     const teachers = await TeacherAPI.getAll();
-//     const subjects = await SubjectAPI.getAll();
-//     const absences = await AbsenceAPI.getAll();
+  await afficherActivites();
+});
 
-//     // Affichage des statistiques
-//     document.getElementById("totalUsers").textContent = users.length;
-//     document.getElementById("totalStudents").textContent = students.length;
-//     document.getElementById("totalTeachers").textContent = teachers.length;
-//     document.getElementById("totalSubjects").textContent = subjects.length;
-//     document.getElementById("totalAbsences").textContent = absences.length;
-//   } catch (error) {
-//     console.error(error);
-//     alert("Impossible de charger les statistiques.");
-//   }
-// }
-// async function chargerMeilleurEtudiant() {
-//   try {
-//     const meilleur = await StatisticsAPI.bestStudent();
+async function getData(url) {
+  const token = localStorage.getItem("token");
 
-//     if (!meilleur) {
-//       document.getElementById("bestStudent").textContent = "-";
-//       document.getElementById("bestAverage").textContent = "-";
+  const reponse = await fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`
+    }
+  });
+  console.log("URL :", url);
+  console.log("STATUS :", reponse.status);
 
-//       return;
-//     }
+  const data = await reponse.json();
 
-//     document.getElementById("bestStudent").textContent =
-//       `${meilleur.nom} ${meilleur.prenom}`;
+  console.log("DATA :", data);
 
-//     document.getElementById("bestAverage").textContent = Number(
-//       meilleur.moyenne,
-//     ).toFixed(2);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
+  return data;
+}
 
-// // Moyenne générale
+async function afficherActivites() {
 
-// async function chargerMoyenneGenerale() {
-//   try {
-//     const moyenne = await StatisticsAPI.generalAverage();
+  const students = await getData("http://localhost:3000/api/students");
+  const teachers = await getData("http://localhost:3000/api/teachers");
+  const subjects = await getData("http://localhost:3000/api/subjects");
+  const grades = await getData("http://localhost:3000/api/grades");
+  const absences = await getData("http://localhost:3000/api/absences");
 
-//     document.getElementById("generalAverage").textContent = Number(
-//       moyenne.moyenneGenerale,
-//     ).toFixed(2);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// }
+  const activity = document.getElementById("activity");
 
-// // Date et heure
+  let activities = [];
 
-// function afficherDate() {
-//   const date = new Date();
+  // 3 derniers étudiants
+  students
+    .sort((a, b) => b.id - a.id)
+    .slice(0, 3)
+    .forEach(student => {
+      activities.push(
+        `Étudiant ajouté : ${student.nom} ${student.prenom}`
+      );
+    });
 
-//   const options = {
-//     weekday: "long",
-//     year: "numeric",
-//     month: "long",
-//     day: "numeric",
-//   };
+  // 3 derniers professeurs
+  teachers
+    .sort((a, b) => b.id - a.id)
+    .slice(0, 3)
+    .forEach(teacher => {
+      activities.push(
+        `Professeur ajouté : ${teacher.nom}`
+      );
+    });
 
-//   const element = document.getElementById("currentDate");
+  // 3 dernières matières
+  subjects
+    .sort((a, b) => b.id - a.id)
+    .slice(0, 3)
+    .forEach(subject => {
+      activities.push(
+        `Matière ajoutée : ${subject.nom}`
+      );
+    });
 
-//   if (element) {
-//     element.textContent = date.toLocaleDateString("fr-FR", options);
-//   }
-// }
-// function afficherBienvenue() {
-//   const user = getUser();
+  // 3 dernières notes
+  grades
+    .sort((a, b) => b.id - a.id)
+    .slice(0, 3)
+    .forEach(grade => {
+      activities.push(
+        `Note ajoutée : ${grade.note}/20`
+      );
+    });
 
-//   if (!user) return;
+  // 3 dernières absences
+  absences
+    .sort((a, b) => b.id - a.id)
+    .slice(0, 3)
+    .forEach(absence => {
+      activities.push(
+        `Absence enregistrée : étudiant ${absence.student_id}`
+      );
+    });
 
-//   const message = document.getElementById("welcomeMessage");
-
-//   if (message) {
-//     message.textContent = `Bienvenue ${user.name}`;
-//   }
-// }
-
-// const logoButton = document.getElementById("logout");
-
-// if (logoButton) {
-//   logoButton.addEventListener("click", logout);
-// }
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   afficherBienvenue();
-
-//   afficherDate();
-
-//   chargerDashboard();
-
-//   chargerMeilleurEtudiant();
-
-//   chargerMoyenneGenerale();
-// });
+  // Afficher seulement les 10 dernières activités
+  activity.innerHTML = activities
+    .slice(0, 10)
+    .map(item => `<li>${item}</li>`)
+    .join("");
+}

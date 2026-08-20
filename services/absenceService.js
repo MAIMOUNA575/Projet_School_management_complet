@@ -28,6 +28,12 @@ function addAbsence(student_id, date, status = 0) {
 }
 
 
+function listerAbsences() {
+    return db.prepare(`
+        SELECT * FROM absences
+    `).all();
+}
+
 
 
 // Marquer une absence
@@ -54,6 +60,17 @@ function marquerAbsence(id, status) {
 
 
 
+function listerDernieresAbsences() {
+    return db.prepare(`
+        SELECT *
+        FROM absences
+        ORDER BY id DESC
+        LIMIT 3
+    `).all();
+}
+
+
+
 // consulter les absences
 function consulerAbsences(student_id) {
     if (!student_id) {
@@ -71,5 +88,9 @@ function consulerAbsences(student_id) {
     return db.prepare(`SELECT * FROM absences WHERE student_id = ?`)
         .all(student_id);
 }
-
-export { addAbsence, marquerAbsence, consulerAbsences };
+export {
+    addAbsence,
+    marquerAbsence,
+    consulerAbsences,
+    listerAbsences
+};

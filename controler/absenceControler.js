@@ -1,4 +1,4 @@
-import {addAbsence,marquerAbsence, consulerAbsences} from "../services/absenceService.js";
+import {addAbsence,marquerAbsence,listerAbsences, consulerAbsences} from "../services/absenceService.js";
 
 function add_Absence(req, res) {
     const { student_id, date, status } = req.body;
@@ -15,6 +15,12 @@ function add_Absence(req, res) {
         message: "Absence ajoutée avec succès",
         id: absence
     });
+}
+
+function lister_Absences(req, res) {
+    const absences = listerAbsences();
+
+    res.json(absences);
 }
 
 function update_Absence(req, res) {
@@ -46,4 +52,4 @@ function consuler_Absences(req,res){
 }
 
 
-export {add_Absence, update_Absence, consuler_Absences}
+export {add_Absence, update_Absence, consuler_Absences,lister_Absences};
